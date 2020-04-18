@@ -9,12 +9,21 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	public CardBase card;
 	public RectTransform container;
 
+	[Header("Rotate settings")] 
+	public float angle = -30f;
+	public float rotationToZeroSpeed = 0f;
+	public float rotationToOneSpeed = 0f;
+	private float _currentState = 0f;
+	private Vector2 _currentRotation = Vector2.zero;
+	
 	private RectTransform _parent;
 	private RectTransform _rectTransform;
 	private Vector2 _standardAnchoredPosition;
 	private Vector2 _standardAnchorMin;
 	private Vector2 _standardAnchorMax;
 	private PointerEventData _pointer;
+	
+	
 	
 	public void OnPointerDown(PointerEventData eventData)
 	{
@@ -40,48 +49,47 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	private void Update()
 	{
 		if (_pointer == null) return;
+
+		if (_pointer.delta != Vector2.zero) {
+			_currentRotation.x += _pointer.delta.x * Time.deltaTime * rotationToOneSpeed;
+			_currentRotation.x = Mathf.Clamp(_currentRotation.x, -1f, 1f);
+
+			_currentRotation.y += _pointer.delta.y * Time.deltaTime * rotationToOneSpeed;
+			_currentRotation.y = Mathf.Clamp(_currentRotation.y, -1f, 1f);
+		}
+		else {
+			
+			if (_currentRotation.x != 0f) {
+				float sign = (_currentRotation.x < 0f) ? -1f : 1f;
+				_currentRotation.x -= Time.deltaTime * rotationToZeroSpeed * sign;
+				float afterSign = (_currentRotation.x < 0f) ? -1f : 1f;
+
+				if (sign != afterSign)
+					_currentRotation.x = 0f;
+
+			}
+
+			if (_currentRotation.y != 0f) {
+				float sign = _currentRotation.y < 0f ? -1f : 1f;
+				_currentRotation.y -= Time.deltaTime * rotationToZeroSpeed * sign;
+				float afterSign = _currentRotation.y < 0f ? -1f : 1f;
+				if (sign != afterSign)
+					_currentRotation.y = 0f;
+			}
+			
+		}
+
+
 		
-		if (_pointer.delta.x < 0)
-		{
-			Vector3 rotation = transform.localEulerAngles;
-			rotation.y = 45;
-			transform.localEulerAngles = rotation;
-		}
-		if (_pointer.delta.x > 0)
-		{
-			Vector3 rotation = transform.localEulerAngles;
-			rotation.y = -45;
-			transform.localEulerAngles = rotation;
-		}
-		else
-		{
-			Vector3 rotation = transform.localEulerAngles;
-			rotation.y = 0;
-			transform.localEulerAngles = rotation;
-		}
-
-		if (_pointer.delta.y < 0)
-		{
-			Vector3 rotation = transform.localEulerAngles;
-			rotation.x = 45;
-			transform.localEulerAngles = rotation;
-		}
-		if (_pointer.delta.y > 0)
-		{
-			Vector3 rotation = transform.localEulerAngles;
-			rotation.x = 45;
-			transform.localEulerAngles = rotation;
-		}
-		else
-		{
-			Vector3 rotation = transform.localEulerAngles;
-			rotation.x = 0;
-			transform.localEulerAngles = rotation;
-		}
-
+		transform.localRotation = Quaternion.Euler(new Vector3(angle * _currentRotation.y, angle * _currentRotation.x, 0f));
 
 		RectTransformUtility.ScreenPointToLocalPointInRectangle(container, _pointer.position, Camera.main,
 					out var localPoint);
 		_rectTransform.anchoredPosition = localPoint;
 	}
+
+	private void RotationProcess() {
+		Vector2 newRotation;
+	}
+	
 }
