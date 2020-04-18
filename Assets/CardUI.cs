@@ -8,12 +8,14 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 	public CardBase card;
 	public RectTransform container;
+	public RectTransform panelCards;
 
 	[Header("Rotate settings")] 
 	public float angle = -30f;
 	public float rotationToZeroSpeed = 0f;
 	public float rotationToOneSpeed = 0f;
 	private float _currentState = 0f;
+	private float panelY;
 	private Vector2 _currentRotation = Vector2.zero;
 	
 	private RectTransform _parent;
@@ -22,32 +24,49 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	private Vector2 _standardAnchorMin;
 	private Vector2 _standardAnchorMax;
 	private PointerEventData _pointer;
-	
-	
-	
+
+
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		_pointer = eventData;
 		_rectTransform.SetParent(container);
 		var anchor = Vector2.one * 0.5f;
 		_rectTransform.anchorMax = anchor;
-		_rectTransform.anchorMin = anchor;
+		_rectTransform.anchorMin = anchor;		
 	}
 
 	public void OnPointerUp(PointerEventData eventData)
 	{
+
+		float positionCard = transform.position.y;
+		float positionPanel = panelCards.localPosition.y + 300f; 
+		Debug.Log(positionCard +"- Pos Card");
+		Debug.Log(positionPanel + "- Pos Panel");
+
+		if (positionCard < panelY)
+		{
+			_rectTransform.SetParent(panelCards);
+		}
+		else
+		{
+			VillageController.Singleton?.ProcessAction(card);
+			Destroy(gameObject);
+		}
 		_pointer = null;
-		VillageController.Singleton?.ProcessAction(card);
-		Destroy(gameObject);
+
 	}
 
 	private void Start()
 	{
 		_rectTransform = transform as RectTransform;
+
+		panelY = Camera.main.ScreenToWorldPoint((Vector3)panelCards.localPosition).y * 2;
 	}
 
 	private void Update()
 	{
+		
+
 		if (_pointer == null) return;
 
 		if (_pointer.delta != Vector2.zero) {
