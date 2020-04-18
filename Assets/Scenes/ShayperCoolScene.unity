@@ -231,7 +231,7 @@ MonoBehaviour:
   background: {fileID: 0}
   description: {fileID: 0}
   title: {fileID: 0}
-  toKillCount: 5
+  toKillCount: 50
 --- !u!1 &165764290
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   background: {fileID: 0}
   description: {fileID: 0}
   title: {fileID: 0}
-  toKillCount: 5
+  toKillCount: 50
 --- !u!1 &299964049
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   background: {fileID: 0}
   description: {fileID: 0}
   title: {fileID: 0}
-  toKillCount: 5
+  toKillCount: 50
 --- !u!1 &323975896
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +637,7 @@ MonoBehaviour:
   background: {fileID: 0}
   description: {fileID: 0}
   title: {fileID: 0}
-  toKillCount: 5
+  toKillCount: 50
 --- !u!1 &719423046
 GameObject:
   m_ObjectHideFlags: 0
@@ -970,7 +970,7 @@ MonoBehaviour:
   background: {fileID: 0}
   description: {fileID: 0}
   title: {fileID: 0}
-  toKillCount: 5
+  toKillCount: 50
 --- !u!1 &971234513
 GameObject:
   m_ObjectHideFlags: 0

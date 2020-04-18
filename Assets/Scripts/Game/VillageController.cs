@@ -29,7 +29,7 @@ namespace Game {
 
 		private void InitVillage() {
 			village = new Village(Random.Range(minStartVillagers, maxStartVillagers));
-			StandardEffects();
+			StandardEvents.Start();
 		}
 		
 
@@ -39,16 +39,8 @@ namespace Game {
 			OnEventInVillage?.Invoke(village.currentState);
 		}
 
-		private void StandardEffects() {
-			GrowUp();
+		private void OnDestroy() {
+			StandardEvents.CancellationTokenSource.Cancel();
 		}
-		
-		
-		private async void GrowUp() {
-			await Task.Delay(3000);
-			ProcessAction(new GrowUpEvent());
-			GrowUp();
-		}
-		
 	}
 }
