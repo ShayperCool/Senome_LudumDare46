@@ -5,5 +5,11 @@ namespace Game.Models {
 		public Sprite CurrentSky { get; set; }
 		public Sprite CurrentVillage { get; set; }
 		public int VillagersCount { get; set; }
+		public State CurrentState { get; set; }
+		
+		public enum State {
+			Idle,
+			Danger,
+		}
 	}
 }

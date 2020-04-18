@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Game.Cards;
 using Game;
+using Ui.Game;
+
 public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 	public CardBase card;
@@ -32,18 +34,13 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		_rectTransform.SetParent(container);
 		var anchor = Vector2.one * 0.5f;
 		_rectTransform.anchorMax = anchor;
-		_rectTransform.anchorMin = anchor;		
+		_rectTransform.anchorMin = anchor;
 	}
 
-	public void OnPointerUp(PointerEventData eventData)
-	{
+	public void OnPointerUp(PointerEventData eventData) {
 
-		float positionCard = transform.position.y;
-		float positionPanel = panelCards.localPosition.y + 300f; 
-		Debug.Log(positionCard +"- Pos Card");
-		Debug.Log(positionPanel + "- Pos Panel");
-
-		if (positionCard < panelY)
+		float positionCard = _rectTransform.localPosition.y + 300f;
+		if (CardsContainer.Singleton.IsInsidePanel(positionCard))
 		{
 			_rectTransform.SetParent(panelCards);
 		}
@@ -77,7 +74,6 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 			_currentRotation.y = Mathf.Clamp(_currentRotation.y, -1f, 1f);
 		}
 		else {
-			
 			if (_currentRotation.x != 0f) {
 				float sign = (_currentRotation.x < 0f) ? -1f : 1f;
 				_currentRotation.x -= Time.deltaTime * rotationToZeroSpeed * sign;
@@ -85,9 +81,7 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 				if (sign != afterSign)
 					_currentRotation.x = 0f;
-
 			}
-
 			if (_currentRotation.y != 0f) {
 				float sign = _currentRotation.y < 0f ? -1f : 1f;
 				_currentRotation.y -= Time.deltaTime * rotationToZeroSpeed * sign;

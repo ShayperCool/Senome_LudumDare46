@@ -8,14 +8,12 @@ using Random = UnityEngine.Random;
 namespace Game {
 	public class VillageController : MonoBehaviour {
 		public static VillageController Singleton { get; private set; }
-		public Village villageState;
+		public Village village;
 		public int maxStartVillagers = 100;
 		public int minStartVillagers = 50;
-		public event Action<int> OnStateChange;
+		public event Action<Village.State> OnEventInVillage;
 
-		private bool _isJumped = false;
-		
-		private void Start() {
+		private void Awake() {
 			InitSingleton();
 			InitVillage();
 		}
@@ -28,15 +26,16 @@ namespace Game {
 		}
 
 		private void InitVillage() {
-			villageState = new Village();
-			villageState.VillagersCount = Random.Range(minStartVillagers, maxStartVillagers);
+			village = new Village {
+				VillagersCount = Random.Range(minStartVillagers, maxStartVillagers)
+			};
 		}
 		
 
 		//Process current state in card or some action object
 		public void ProcessAction(IEventInVillage eventInVillage) {
-			eventInVillage.ProcessVillage(villageState);
-			OnStateChange?.Invoke(0);
+			eventInVillage.ProcessVillage(village);
+			OnEventInVillage?.Invoke(village.CurrentState);
 		}
 	}
 }
