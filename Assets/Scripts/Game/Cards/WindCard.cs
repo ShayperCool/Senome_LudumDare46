@@ -1,15 +1,11 @@
-﻿using System;
-using Game.Models;
+﻿using Game.Models;
 using UnityEngine;
 
 namespace Game.Cards {
-	public class RainCard : CardBase {
-		
-		
-		
+	public class WindCard : CardBase{
 		protected override void ProcessVillageByCard(Village village) {
-			if (village.currentEvent == InVillageEvent.Fire) {
-				Debug.Log("Fire canceled");
+			if (village.currentEvent == InVillageEvent.Fog) {
+				Debug.Log("Fog canceled");
 				village.currentEvent = InVillageEvent.None;
 			}
 		}

@@ -10,10 +10,12 @@ using Random = UnityEngine.Random;
 namespace Game {
 	public class VillageController : MonoBehaviour {
 		public static VillageController Singleton { get; private set; }
+		
 		public Village village;
-		public int maxStartVillagers = 100;
-		public int minStartVillagers = 50;
+		public int maxStartVillagers = 250;
+		public int minStartVillagers = 150;
 		public event Action<Village.State> OnEventInVillage;
+		public event Action OnStateChange;
 
 		private void Awake() {
 			InitSingleton();
@@ -29,18 +31,28 @@ namespace Game {
 
 		private void InitVillage() {
 			village = new Village(Random.Range(minStartVillagers, maxStartVillagers));
-			StandardEvents.Start();
+			StandardEvents.Start(village);
+			
 		}
 		
 
 		//Process current state in card or some action object
-		public void ProcessAction(IEventInVillage eventInVillage) {
+		public void ProcessEventOrCard(IEventInVillage eventInVillage) {
+			var stateBefore = village.currentState;
 			eventInVillage.ProcessVillage(village);
+			
+			if (village.currentEvent == InVillageEvent.None)
+				village.currentState = Village.State.Idle;
+			
+			if(stateBefore != village.currentState && stateBefore == Village.State.Idle)
+				StandardEvents.GrowUpCancelToken.Cancel();
+			
 			OnEventInVillage?.Invoke(village.currentState);
 		}
-
+		
+		
 		private void OnDestroy() {
-			StandardEvents.CancellationTokenSource.Cancel();
+			StandardEvents.GameStop.Cancel();
 		}
 	}
 }

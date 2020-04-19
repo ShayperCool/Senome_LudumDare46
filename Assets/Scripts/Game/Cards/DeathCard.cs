@@ -6,11 +6,10 @@ using UnityEngine;
 namespace Game.Cards {
 	public class DeathCard : CardBase {
 
-		public int toKillCount;
+		private static readonly int _toKillCount = 50;
 		
 		protected override void ProcessVillageByCard(Village village) {
-			;
-			village.villagersCount -= Convert.ToInt32(toKillCount * village.Coefficient);
+			village.villagersCount -= _toKillCount;
 		}
 	}
 }
