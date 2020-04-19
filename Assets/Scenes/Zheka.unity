@@ -191,7 +191,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 9edab484db5f7e24c94398aba1fc3cc2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5275,7 +5275,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: d84a0c2135faa24418949e86e2ff20bc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5644,7 +5644,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -4
   m_Sprite: {fileID: 21300000, guid: 9d60a9deaaf69e246bb96f64f4363426, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6555,6 +6555,7 @@ MonoBehaviour:
   - {fileID: 9117806132838483637, guid: 1b3c481ada9f0fb4fa49610cadf609b7, type: 3}
   - {fileID: 9117806132838483637, guid: dd109c07c34598845871c7972f4d4841, type: 3}
   - {fileID: 9117806132838483637, guid: 1c2b8d155a46bb2489cf115170214644, type: 3}
+  mergedCardsPrefab: {fileID: 0}
   cardsContainer: {fileID: 1448679463}
   canvas: {fileID: 1148328912}
   cards: {fileID: 992321845}
@@ -6886,7 +6887,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: ee44ad42739e96041a388bc74a414130, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

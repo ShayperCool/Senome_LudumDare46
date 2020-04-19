@@ -59,8 +59,8 @@ namespace Game.Cards.Merge {
 		}
 		
 		public static void ProcessVillage(string pattern, Village village) {
-			EventInVillage state = village.currentEvent;
-			if (_solveTable[state].Contains(pattern.SumOfChars()))
+			var state = village.currentEvent;
+			if (_solveTable.ContainsKey(state) && _solveTable[state].Contains(pattern.SumOfChars()))
 				village.currentEvent = EventInVillage.None;
 		}
 		
