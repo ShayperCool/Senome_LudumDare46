@@ -9,32 +9,46 @@ namespace Game.Events {
 	public static class StandardEvents {
 		
 		//Token will be cancelled just on end of game 
-		public static CancellationTokenSource CancellationTokenSource;
+		public static CancellationTokenSource GameStop;
+		//For cancel growUp Task.Delay
+		public static CancellationTokenSource GrowUpCancelToken;
 		private static Array _enumElements;
+		private static Village _village;
 		
-		public static void Start() {
-			CancellationTokenSource = new CancellationTokenSource();
+
+		public static void Start(Village village) {
+			GameStop = new CancellationTokenSource();
 			_enumElements = Enum.GetValues(typeof(InVillageEvent));
+			_village = village;
+			GrowUpCancelToken = new CancellationTokenSource();
 			GrowUp();
 			RandomEventSpawn();
 		}
 		
 		private static async void GrowUp() {
 			while (true) {
-				await Task.Delay(5000);
-				if (CancellationTokenSource.IsCancellationRequested)
+				int delay = _village.currentState == Village.State.Idle ? 5000 : 1000;
+				await Task.Delay(delay);
+				//On end of game cancel
+				if (GameStop.IsCancellationRequested)
 					return;
-				VillageController.Singleton.ProcessAction(new GrowUpEvent());
+				if(_village.currentState == Village.State.Idle)
+					VillageController.Singleton.ProcessEventOrCard(new GrowUpEvent());
+				else
+					VillageController.Singleton.ProcessEventOrCard(new DeathEvent());
 			}
 		}
 
 		private static async void RandomEventSpawn() {
 			while (true) {
 				await Task.Delay(Random.Range(3000, 7000));
-				if (CancellationTokenSource.IsCancellationRequested)
+				if (GameStop.IsCancellationRequested)
 					return;
+				
+				if (_village.currentState == Village.State.Danger) 
+					continue;
 				var inVillageEvent = (InVillageEvent)_enumElements.GetValue(Random.Range(0, _enumElements.Length));
-				VillageController.Singleton.ProcessAction(GetEvent(inVillageEvent));
+				VillageController.Singleton.ProcessEventOrCard(GetEvent(inVillageEvent));
 			}
 		}
 		
@@ -50,11 +64,11 @@ namespace Game.Events {
 					return new FogEvent();
 				case InVillageEvent.Earthquake:
 					return new EarthquakeEvent();
+				case InVillageEvent.None:
+					return new NoneEvent();
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
-			
 		}
-		
 	}
 }
