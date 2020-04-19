@@ -43,6 +43,7 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		if (CardsContainer.Singleton.IsInsidePanel(positionCard))
 		{
 			_rectTransform.SetParent(panelCards);
+			transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
 		}
 		else
 		{
