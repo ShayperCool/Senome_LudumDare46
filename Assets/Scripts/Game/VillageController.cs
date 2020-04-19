@@ -41,7 +41,7 @@ namespace Game {
 			var stateBefore = village.currentState;
 			eventInVillage.ProcessVillage(village);
 			
-			if (village.currentEvent == InVillageEvent.None)
+			if (village.currentEvent == EventInVillage.None)
 				village.currentState = Village.State.Idle;
 			
 			if(stateBefore != village.currentState && stateBefore == Village.State.Idle)

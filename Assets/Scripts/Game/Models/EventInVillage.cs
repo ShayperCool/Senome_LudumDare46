@@ -1,11 +1,12 @@
 ﻿namespace Game.Models {
-	public enum InVillageEvent {
+	public enum EventInVillage {
 		Fire,
 		Flood,
 		Plague,
 		Fog,
 		Earthquake,
 		None,
-		Tornado
+		Tornado,
+		AddHumans
 	}
 }

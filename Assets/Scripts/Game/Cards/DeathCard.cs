@@ -4,13 +4,12 @@ using Game.Models;
 using UnityEngine;
 
 namespace Game.Cards {
-	public class DeathCard : CardBase {
+	public class DeathCard : CardBase, IMergeCard {
 
 		private static readonly int _toKillCount = 50;
 
-		public override bool CanMerge(CardBase card)
-		{
-			throw new NotImplementedException();
+		public bool CanMerge(CardBase card) {
+			return card.type == CardType.Death;
 		}
 
 		protected override void ProcessVillageByCard(Village village) {

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Game.Cards;
 using Game;
+using Game.Cards.Merge;
 using Ui.Game;
 
 public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -46,8 +47,8 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		{
 			_rectTransform.SetParent(CardsContainer.Singleton.cards);
 			transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-			var closestCard = CardsContainer.Singleton.GetClosestCard(transform.position);
-
+			var closestCard = CardsContainer.Singleton.GetClosestCard(card);
+			MergedCardsController.CanMerge(closestCard.ToString() + card);
 		}
 		else
 		{

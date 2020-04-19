@@ -6,7 +6,7 @@ namespace Game.Events {
 		public void ProcessVillage(Village village) {
 			Debug.Log("Fog!!!");
 			village.currentState = Village.State.Idle;
-			village.currentEvent = InVillageEvent.Fog;
+			village.currentEvent = EventInVillage.Fog;
 		}
 	}
 }

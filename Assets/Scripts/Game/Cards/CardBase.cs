@@ -16,6 +16,9 @@ namespace Game.Cards {
 		}
 
 		protected abstract void ProcessVillageByCard(Village village);
-		public abstract bool CanMerge(CardBase card);
+
+		public override string ToString() {
+			return ((char)type).ToString();
+		}
 	}
 }

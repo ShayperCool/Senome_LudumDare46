@@ -3,17 +3,22 @@ using Game.Models;
 using UnityEngine;
 
 namespace Game.Cards {
-	public class RainCard : CardBase {
-		public override bool CanMerge(CardBase card)
+	public class RainCard : CardBase, IMergeCard {
+		public bool CanMerge(CardBase card)
 		{
 			throw new NotImplementedException();
 		}
 
+		private void Start() {
+			type = CardType.Rain;
+		}
+		
 		protected override void ProcessVillageByCard(Village village) {
-			if (village.currentEvent == InVillageEvent.Fire) {
+			if (village.currentEvent == EventInVillage.Fire) {
 				Debug.Log("Fire canceled");
-				village.currentEvent = InVillageEvent.None;
+				village.currentEvent = EventInVillage.None;
 			}
 		}
+		
 	}
 }

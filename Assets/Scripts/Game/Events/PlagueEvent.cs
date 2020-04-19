@@ -6,7 +6,7 @@ namespace Game.Events {
 		public void ProcessVillage(Village village) {
 			Debug.Log("Plague!!!");
 			village.currentState = Village.State.Danger;
-			village.currentEvent = InVillageEvent.Plague;
+			village.currentEvent = EventInVillage.Plague;
 		}
 	}
 }

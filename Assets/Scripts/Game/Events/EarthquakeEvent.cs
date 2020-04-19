@@ -6,7 +6,7 @@ namespace Game.Events {
 		public void ProcessVillage(Village village) {
 			Debug.Log("Earthquake!!!");
 			village.currentState = Village.State.Danger;
-			village.currentEvent = InVillageEvent.Earthquake;
+			village.currentEvent = EventInVillage.Earthquake;
 		}
 	}
 }
