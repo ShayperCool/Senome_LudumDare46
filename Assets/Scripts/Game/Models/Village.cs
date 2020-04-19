@@ -7,7 +7,7 @@ namespace Game.Models {
 		public Sprite currentVillage;
 		public int villagersCount;
 		public State currentState = State.Idle;
-		public InVillageEvent currentEvent = InVillageEvent.None;
+		public EventInVillage currentEvent = EventInVillage.None;
 		public float Coefficient => villagersCount / _villagersOnStart;
 		private readonly float _villagersOnStart;
 

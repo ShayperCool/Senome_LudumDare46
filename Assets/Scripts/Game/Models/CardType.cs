@@ -1,9 +1,9 @@
 ﻿namespace Game.Cards {
 	public enum CardType {
-		Rain,
-		Fire,
-		Sun,
-		Wind,
-		Death
+		Rain = 'r',
+		Fire = 'f',
+		Sun = 's',
+		Wind = 'w',
+		Death = 'd'
 	}
 }

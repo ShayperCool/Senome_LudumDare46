@@ -57,13 +57,16 @@ namespace Ui.Game {
 			SpawnCard();
 		}
 
-		public CardBase GetClosestCard(Vector2 cardPosition)
+		public CardBase GetClosestCard(CardBase card)
 		{
 			float distance = Mathf.Infinity;
 			int index=0;
-			for(int i=0; i < listCardBase.Count; i++)
+			for(int i = 0; i < listCardBase.Count; i++)
 			{
-				float distanceToCard = Vector2.Distance(cardPosition, listCardBase[i].gameObject.transform.position);
+				if(listCardBase[i] == card)
+					continue;
+				
+				float distanceToCard = Vector2.Distance(card.transform.position, listCardBase[i].gameObject.transform.position);
 				if (distanceToCard < distance)
 				{
 					index = i;

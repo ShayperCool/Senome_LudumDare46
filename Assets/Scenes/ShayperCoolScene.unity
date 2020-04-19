@@ -516,6 +516,7 @@ MonoBehaviour:
   cardsContainer: {fileID: 1444111527}
   canvas: {fileID: 971234517}
   cards: {fileID: 1908012811}
+  listCardBase: []
 --- !u!1 &1668916120
 GameObject:
   m_ObjectHideFlags: 0

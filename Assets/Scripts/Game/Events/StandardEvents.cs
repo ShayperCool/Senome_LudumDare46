@@ -18,7 +18,7 @@ namespace Game.Events {
 
 		public static void Start(Village village) {
 			GameStop = new CancellationTokenSource();
-			_enumElements = Enum.GetValues(typeof(InVillageEvent));
+			_enumElements = Enum.GetValues(typeof(EventInVillage));
 			_village = village;
 			GrowUpCancelToken = new CancellationTokenSource();
 			GrowUp();
@@ -47,24 +47,24 @@ namespace Game.Events {
 				
 				if (_village.currentState == Village.State.Danger) 
 					continue;
-				var inVillageEvent = (InVillageEvent)_enumElements.GetValue(Random.Range(0, _enumElements.Length));
+				var inVillageEvent = (EventInVillage)_enumElements.GetValue(Random.Range(0, _enumElements.Length));
 				VillageController.Singleton.ProcessEventOrCard(GetEvent(inVillageEvent));
 			}
 		}
 		
-		private static IEventInVillage GetEvent(InVillageEvent inVillageEvent) {
-			switch (inVillageEvent) {
-				case InVillageEvent.Fire:
+		private static IEventInVillage GetEvent(EventInVillage eventInVillage) {
+			switch (eventInVillage) {
+				case EventInVillage.Fire:
 					return new FireEvent();
-				case InVillageEvent.Flood:
+				case EventInVillage.Flood:
 					return new FloodEvent();
-				case InVillageEvent.Plague:
+				case EventInVillage.Plague:
 					return new PlagueEvent();
-				case InVillageEvent.Fog:
+				case EventInVillage.Fog:
 					return new FogEvent();
-				case InVillageEvent.Earthquake:
+				case EventInVillage.Earthquake:
 					return new EarthquakeEvent();
-				case InVillageEvent.None:
+				case EventInVillage.None:
 					return new NoneEvent();
 				default:
 					throw new ArgumentOutOfRangeException();
