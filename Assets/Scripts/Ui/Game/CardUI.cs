@@ -24,6 +24,7 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	private Vector2 _standardAnchorMax;
 	private PointerEventData _pointer;
 
+	private Vector3 _stratPointDerection;
 
 	public void OnPointerDown(PointerEventData eventData)
 	{
@@ -32,6 +33,10 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		var anchor = Vector2.one * 0.5f;
 		_rectTransform.anchorMax = anchor;
 		_rectTransform.anchorMin = anchor;
+
+		Vector3 position = _pointer.position;
+		position.z = 10f;
+		_stratPointDerection = Camera.main.ScreenToWorldPoint(position);
 	}
 
 	public void OnPointerUp(PointerEventData eventData) {
@@ -51,7 +56,7 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 			Destroy(gameObject);
 		}
 		_pointer = null;
-
+		Paralax.currentDirection = Vector2.zero;
 	}
 
 	private void Start()
@@ -61,9 +66,15 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 	private void Update()
 	{
-
+		
 
 		if (_pointer == null) return;
+
+		Debug.Log("_pointer.position -" + Camera.main.ScreenToWorldPoint(_pointer.position));
+		Debug.Log("_stratPointDerection -" + _stratPointDerection);
+		Vector3 position = _pointer.position;
+		position.z = 10f;
+		Paralax.currentDirection = Camera.main.ScreenToWorldPoint(position) - _stratPointDerection;
 
 		if (_pointer.delta != Vector2.zero) {
 			_currentRotation.x += _pointer.delta.x * Time.deltaTime * _rotationToOneSpeed;
