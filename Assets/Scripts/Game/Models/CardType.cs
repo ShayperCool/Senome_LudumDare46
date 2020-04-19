@@ -4,6 +4,7 @@
 		Fire = 'f',
 		Sun = 's',
 		Wind = 'w',
-		Death = 'd'
+		Death = 'd',
+		Earth = 'e'
 	}
 }

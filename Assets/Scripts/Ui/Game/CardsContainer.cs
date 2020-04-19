@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using Random = UnityEngine.Random;
 using Game.Cards;
+using Game.Cards.Merge;
+using UnityEngine.UI;
 
 namespace Ui.Game {
 	public class CardsContainer : MonoBehaviour {
@@ -11,6 +13,7 @@ namespace Ui.Game {
 		[Header("Cards")]
 		public GameObject[] cardPrefabs;
 		private int maxCardsInHand = 5;
+		public GameObject mergedCardsPrefab;
 		[Header("Some Service Objects")]
 		public RectTransform cardsContainer;
 		public RectTransform canvas;
@@ -40,6 +43,28 @@ namespace Ui.Game {
 			listCardBase.Add(cardUi.card);
 		}
 
+		public void MergeCards(CardBase card, CardBase card2) {
+			var mergedCard = Instantiate(mergedCardsPrefab, cards).GetComponent<MergedCard>();
+			AddCardToMergedCard(mergedCard, card);
+			AddCardToMergedCard(mergedCard, card2);
+			listCardBase.Add(mergedCard);
+		}
+
+		private void AddCardToMergedCard(MergedCard mergedCard, CardBase card) {
+			if (card is MergedCard mc) {
+				foreach (var cardBase in mc.cards) {
+					mergedCard.cards.Add(cardBase);
+				}
+			}
+			else {
+				mergedCard.cards.Add(card);
+			}
+			card.transform.SetParent(mergedCard.transform);
+			card.GetComponent<Image>().raycastTarget = false;
+			Destroy(card.GetComponent<CardUI>());
+			listCardBase.Remove(card);
+		}
+		
 		private void InitSingleton() {
 			if (Singleton)
 				Destroy(gameObject);
@@ -47,9 +72,8 @@ namespace Ui.Game {
 				Singleton = this;
 		}
 
-		public bool IsInsidePanel(float y) {
-			return y < _cardsContainerY;
-		}
+		public bool IsInsidePanel(float y) => y < _cardsContainerY;
+		
 
 		public void OnDrop(CardBase card)
 		{
@@ -65,7 +89,6 @@ namespace Ui.Game {
 			{
 				if(listCardBase[i] == card)
 					continue;
-				
 				float distanceToCard = Vector2.Distance(card.transform.position, listCardBase[i].gameObject.transform.position);
 				if (distanceToCard < distance)
 				{

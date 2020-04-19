@@ -1,10 +1,15 @@
-﻿using Game.Models;
+﻿using System;
+using Game.Models;
 using UnityEngine;
 
 namespace Game.Cards {
 	public class EarthCard : CardBase, IMergeCard {
 		public bool CanMerge(CardBase card) {
-			return card.type == CardType.Wind;
+			return false;
+		}
+
+		private void Start() {
+			type = CardType.Earth;
 		}
 
 		protected override void ProcessVillageByCard(Village village) {

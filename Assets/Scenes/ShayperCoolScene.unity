@@ -513,6 +513,8 @@ MonoBehaviour:
   - {fileID: 9117806132838483637, guid: 1b3c481ada9f0fb4fa49610cadf609b7, type: 3}
   - {fileID: 9117806132838483637, guid: dd109c07c34598845871c7972f4d4841, type: 3}
   - {fileID: 9117806132838483637, guid: 1c2b8d155a46bb2489cf115170214644, type: 3}
+  mergedCardsPrefab: {fileID: 4469612588121663354, guid: 90c3be2efd3e9a449be1d085e787bc87,
+    type: 3}
   cardsContainer: {fileID: 1444111527}
   canvas: {fileID: 971234517}
   cards: {fileID: 1908012811}

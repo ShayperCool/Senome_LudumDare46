@@ -18,6 +18,9 @@ namespace Game.Cards.Merge {
 			"dds".SumOfChars(),
 			"srw".SumOfChars(),
 			"ddr".SumOfChars(),
+			"dd".SumOfChars(),
+			"ds".SumOfChars(),
+			"dr".SumOfChars()
 		};
 		
 		public static bool CanMerge(string pattern) {

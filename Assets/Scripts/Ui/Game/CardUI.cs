@@ -43,7 +43,11 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 			_rectTransform.SetParent(CardsContainer.Singleton.cards);
 			transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
 			var closestCard = CardsContainer.Singleton.GetClosestCard(card);
-			MergedCardsController.CanMerge(closestCard.ToString() + card);
+			bool canMerge = MergedCardsController.CanMerge(closestCard.ToString() + card);
+			Debug.Log(canMerge);
+			if (canMerge) {
+				CardsContainer.Singleton.MergeCards(card, closestCard);
+			}
 		}
 		else
 		{
@@ -62,8 +66,6 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 	private void Update()
 	{
-
-
 		if (_pointer == null) return;
 
 		if (_pointer.delta != Vector2.zero) {
