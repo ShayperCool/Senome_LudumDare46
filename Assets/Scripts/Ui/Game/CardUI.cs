@@ -71,8 +71,6 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 		if (_pointer == null) return;
 
-		Debug.Log("_pointer.position -" + Camera.main.ScreenToWorldPoint(_pointer.position));
-		Debug.Log("_stratPointDerection -" + _stratPointDerection);
 		Vector3 position = _pointer.position;
 		position.z = 10f;
 		Paralax.currentDirection = Camera.main.ScreenToWorldPoint(position) - _stratPointDerection;
