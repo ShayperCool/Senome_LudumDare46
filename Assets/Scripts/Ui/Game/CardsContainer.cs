@@ -97,6 +97,8 @@ namespace Ui.Game {
 				}
 			}
 			return listCardBase[index];
+
 		}
 	}
+	
 }
