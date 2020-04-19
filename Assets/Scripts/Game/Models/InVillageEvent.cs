@@ -6,5 +6,6 @@
 		Fog,
 		Earthquake,
 		None,
+		Tornado
 	}
 }

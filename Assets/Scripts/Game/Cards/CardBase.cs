@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace Game.Cards {
 	public abstract class CardBase : MonoBehaviour ,IEventInVillage {
 		public CardParameters parameters;
-		
+		public CardType type;
 		public Image foreground;
 		public Image background;
 		public Text description;
@@ -16,6 +16,6 @@ namespace Game.Cards {
 		}
 
 		protected abstract void ProcessVillageByCard(Village village);
-
+		public abstract bool CanMerge(CardBase card);
 	}
 }

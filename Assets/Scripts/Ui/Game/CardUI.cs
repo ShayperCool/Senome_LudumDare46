@@ -16,7 +16,8 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
 
 	public CardBase card;
-	public Action OnDrop { get; set; }
+	public Action<CardBase> OnDrop { get; set; }
+	
 	private Vector2 _currentRotation = Vector2.zero;
 	private RectTransform _rectTransform;
 	private Vector2 _standardAnchorMin;
@@ -40,11 +41,13 @@ public class CardUI : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 		{
 			_rectTransform.SetParent(CardsContainer.Singleton.cards);
 			transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+			var closestCard = CardsContainer.Singleton.GetClosestCard(transform.position);
+
 		}
 		else
 		{
 			VillageController.Singleton?.ProcessEventOrCard(card);
-			OnDrop?.Invoke();
+			OnDrop?.Invoke(card);
 			Destroy(gameObject);
 		}
 		_pointer = null;
