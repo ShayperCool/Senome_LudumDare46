@@ -57,6 +57,9 @@ namespace Game.ActonsOnEvents
 		private void OnEventEnd()
 		{
 			_isRunning = false;
+			if (VillageController.Singleton.village.canceledByCombo) {
+				//Действия
+			}
 			Earthquake.SetActive(false);
 		}
 
