@@ -17,6 +17,7 @@ namespace Game.Cards {
 			if (village.currentEvent == EventInVillage.Fire) {
 				Debug.Log("Fire canceled");
 				village.currentEvent = EventInVillage.None;
+				VillageController.Singleton.village.currentState = Village.State.Idle;
 			}
 		}
 		

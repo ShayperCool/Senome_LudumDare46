@@ -16,6 +16,7 @@ namespace Game.Cards {
 			if (village.currentEvent == EventInVillage.Earthquake || village.currentEvent == EventInVillage.Plague) {
 				Debug.Log("Earthquake canceled");
 				village.currentEvent = EventInVillage.None;
+				VillageController.Singleton.village.currentState = Village.State.Idle;
 			}
 		}
 	}

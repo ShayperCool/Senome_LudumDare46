@@ -7,6 +7,8 @@ namespace Game.ActonsOnEvents {
 		
 		public static FloodEventController Singleton { get; private set; }
 		public GameObject Flood;
+		//public float speed;
+		//public Vector3 startPosition, endPosition;
 		private bool _isRunning = false;
 		
 		private void Start() {
@@ -26,6 +28,7 @@ namespace Game.ActonsOnEvents {
 		private void OnEventStart() {
 			_isRunning = true;
 			Flood.SetActive(true);
+
 		}
 
 
