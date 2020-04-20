@@ -13,7 +13,6 @@ public class NPC : MonoBehaviour
     [SerializeField] private bool _grounded;
     [SerializeField] private Transform _groundTransform;
     [SerializeField] private LayerMask _whatIsGround;
-    [SerializeField] private int Test = 0;
     [SerializeField] private int minXNpcPos;
     [SerializeField] private int maxXNpcPos;
 
