@@ -43,15 +43,15 @@ namespace Game.ActonsOnEvents
 			Debug.Log("Анимация Землетрясения");
 			Earthquake.SetActive(true);
 
-			while (_isRunning)
-			{
-				if (_currentForce <= 0 && _currentForce != -forceEarthquake) _currentForce -= 0.1f;
-				if (_currentForce > 0 && _currentForce != forceEarthquake) _currentForce += 0.1f;
+			//while (_isRunning)
+			//{
+			//	if (_currentForce <= 0 && _currentForce != -forceEarthquake) _currentForce -= 0.1f;
+			//	if (_currentForce > 0 && _currentForce != forceEarthquake) _currentForce += 0.1f;
 				
-				Vector3 newPosition = _startPosition;
-				newPosition.y += _currentForce;
-				cameraEarthquake.transform.position = newPosition;
-			}			
+			//	Vector3 newPosition = _startPosition;
+			//	newPosition.y += _currentForce;
+			//	cameraEarthquake.transform.position = newPosition;
+			//}			
 		}
 
 
