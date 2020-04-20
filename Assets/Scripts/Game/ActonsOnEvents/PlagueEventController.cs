@@ -3,9 +3,9 @@ using Game.Models;
 using UnityEngine;
 
 namespace Game.ActonsOnEvents {
-	public class FireEventController : MonoBehaviour {
+	public class PlagueEventController : MonoBehaviour {
 		
-		public static FireEventController Singleton { get; private set; }
+		public static PlagueEventController Singleton { get; private set; }
 
 		private bool _isRunning = false;
 		
@@ -16,7 +16,7 @@ namespace Game.ActonsOnEvents {
 
 		private void OnEventInVillage(EventInVillage eventInVillage) {
 			
-			if(eventInVillage == EventInVillage.Fire)
+			if(eventInVillage == EventInVillage.Plague)
 				OnEventStart();
 			if(_isRunning && eventInVillage == EventInVillage.None)
 				OnEventEnd();
@@ -24,13 +24,13 @@ namespace Game.ActonsOnEvents {
 
 		private void OnEventStart() {
 			_isRunning = true;
-			Debug.Log("Анимация огня");
+			Debug.Log("Анимация Чумы");
 		}
 
 
 		private void OnEventEnd() {
 			_isRunning = false;
-			Debug.Log("Конец анимации огня");
+			Debug.Log("Конец анимации Чумы");
 		}
 		
 		void InitSingleton() {

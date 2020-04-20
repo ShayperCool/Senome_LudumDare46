@@ -8,6 +8,8 @@ public class Paralax : MonoBehaviour
     private Vector3 _startPosition;
     [Range(0f, 1f)]
     public float strength = 0.5f;
+    [Range(0f, 1f)]
+    public float strengthY = 0.5f;
 
     private void Start()
     {
@@ -18,6 +20,7 @@ public class Paralax : MonoBehaviour
     { 
         Vector3 newPosition = _startPosition;
         newPosition.x -= currentDirection.x * strength;
+        newPosition.y -= currentDirection.y * strength;
         transform.position = newPosition;
     }
 

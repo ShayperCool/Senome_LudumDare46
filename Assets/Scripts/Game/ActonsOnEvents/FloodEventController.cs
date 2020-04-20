@@ -3,20 +3,21 @@ using Game.Models;
 using UnityEngine;
 
 namespace Game.ActonsOnEvents {
-	public class FireEventController : MonoBehaviour {
+	public class FloodEventController : MonoBehaviour {
 		
-		public static FireEventController Singleton { get; private set; }
-
+		public static FloodEventController Singleton { get; private set; }
+		public GameObject Flood;
 		private bool _isRunning = false;
 		
 		private void Start() {
+			Flood.SetActive(false);
 			InitSingleton();
 			VillageController.Singleton.OnEventInVillage += OnEventInVillage;
 		}
 
 		private void OnEventInVillage(EventInVillage eventInVillage) {
 			
-			if(eventInVillage == EventInVillage.Fire)
+			if(eventInVillage == EventInVillage.Flood)
 				OnEventStart();
 			if(_isRunning && eventInVillage == EventInVillage.None)
 				OnEventEnd();
@@ -24,13 +25,15 @@ namespace Game.ActonsOnEvents {
 
 		private void OnEventStart() {
 			_isRunning = true;
-			Debug.Log("Анимация огня");
+			Debug.Log("Анимация Наводнения");
+			Flood.SetActive(true);
 		}
 
 
 		private void OnEventEnd() {
 			_isRunning = false;
-			Debug.Log("Конец анимации огня");
+			Debug.Log("Конец анимации Наводнениея");
+			Flood.SetActive(false);
 		}
 		
 		void InitSingleton() {

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Game.Events.AiEvents;
 using Game.Events.PlayerEvents;
 using Game.Models;
+using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Game.Events {
@@ -12,6 +13,7 @@ namespace Game.Events {
 		
 		//Token will be cancelled just on end of game 
 		public static CancellationTokenSource GameStop;
+		public static int NumberMovesUntilTheEndGame = 12;
 		//For cancel growUp Task.Delay
 		public static CancellationTokenSource GrowUpCancelToken;
 		private static Array _enumElements;
@@ -42,15 +44,17 @@ namespace Game.Events {
 		}
 
 		private static async void RandomEventSpawn() {
-			while (true) {
+			while (true)
+			{
 				await Task.Delay(Random.Range(3000, 7000));
-				if (GameStop.IsCancellationRequested)
+				if (GameStop.IsCancellationRequested || NumberMovesUntilTheEndGame == 0)
 					return;
-				
-				if (_village.currentState == Village.State.Danger) 
+
+				if (_village.currentState == Village.State.Danger)
 					continue;
 				var inVillageEvent = (EventInVillage)_enumElements.GetValue(Random.Range(0, _enumElements.Length));
 				VillageController.Singleton.ProcessEventOrCard(GetEvent(inVillageEvent));
+				NumberMovesUntilTheEndGame--;
 			}
 		}
 		

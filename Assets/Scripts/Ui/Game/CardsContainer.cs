@@ -6,8 +6,10 @@ using Game.Cards;
 using Game.Cards.Merge;
 using UnityEngine.UI;
 
-namespace Ui.Game {
-	public class CardsContainer : MonoBehaviour {
+namespace Ui.Game
+{
+	public class CardsContainer : MonoBehaviour
+	{
 		public static CardsContainer Singleton { get; private set; }
 
 		[Header("Cards")]
@@ -20,22 +22,40 @@ namespace Ui.Game {
 		public RectTransform cards;
 		private float _cardsContainerY;
 		public List<CardBase> listCardBase = new List<CardBase>();
+		[Header("List Cards")]
+		public int numberOfCards;
+		public float rateTheEarth;
+		public float rateTheWind;
+		public float rateTheDeath;
+		public float rateTheSun;
+		public float rateTheRain;
+		private List<CardType> _listOfCards = new List<CardType>();
 
-		private void Start() {
+		private void Awake()
+		{
+			RandomCards();
+		}
 
+		private void Start()
+		{			
 			_cardsContainerY = Camera.main.ViewportToScreenPoint(new Vector3(0f, cardsContainer.anchorMax.y, 0f)).y;
 			InitSingleton();
 			InitCards();
 		}
 
-		private void InitCards() {
-			for (var i = 0; i < maxCardsInHand; i++) {
+		private void InitCards()
+		{
+			for (var i = 0; i < maxCardsInHand; i++)
+			{
 				SpawnCard();
 			}
 		}
 
-		public void SpawnCard() {
+		public void SpawnCard()
+		{
 			int cardIndex = Random.Range(0, cardPrefabs.Length);
+			//int listIndex = Random.Range(0, _listOfCards.Count);
+			//int cardIndex = _listCards[listIndex];
 			var card = cardPrefabs[cardIndex];
 			var cardUi = Instantiate(card, cards).GetComponent<CardUI>();
 			//Callback for spawn new card
@@ -43,24 +63,29 @@ namespace Ui.Game {
 			listCardBase.Add(cardUi.card);
 		}
 
-		public void MergeCards(CardBase card, CardBase card2) {
+		public void MergeCards(CardBase card, CardBase card2)
+		{
 			var mergedCardObject = Instantiate(mergedCardsPrefab, cards);
 			var mergedCard = mergedCardObject.GetComponent<MergedCard>();
 			AddCardToMergedCard(mergedCard, card);
 			AddCardToMergedCard(mergedCard, card2);
 			var mergedCardUi = mergedCardObject.GetComponent<CardUI>();
 			mergedCardUi.OnDrop += OnDrop;
-			
+
 			listCardBase.Add(mergedCard);
 		}
 
-		private void AddCardToMergedCard(MergedCard mergedCard, CardBase card) {
-			if (card is MergedCard mc) {
-				foreach (var cardBase in mc.cards) {
+		private void AddCardToMergedCard(MergedCard mergedCard, CardBase card)
+		{
+			if (card is MergedCard mc)
+			{
+				foreach (var cardBase in mc.cards)
+				{
 					mergedCard.cards.Add(cardBase);
 				}
 			}
-			else {
+			else
+			{
 				mergedCard.cards.Add(card);
 			}
 			card.transform.SetParent(mergedCard.transform);
@@ -68,8 +93,9 @@ namespace Ui.Game {
 			Destroy(card.GetComponent<CardUI>());
 			listCardBase.Remove(card);
 		}
-		
-		private void InitSingleton() {
+
+		private void InitSingleton()
+		{
 			if (Singleton)
 				Destroy(gameObject);
 			else
@@ -77,7 +103,7 @@ namespace Ui.Game {
 		}
 
 		public bool IsInsidePanel(float y) => y < _cardsContainerY;
-		
+
 
 		public void OnDrop(CardBase card)
 		{
@@ -89,9 +115,9 @@ namespace Ui.Game {
 		{
 			float distance = Mathf.Infinity;
 			int index = 0;
-			for(int i = 0; i < listCardBase.Count; i++)
+			for (int i = 0; i < listCardBase.Count; i++)
 			{
-				if(listCardBase[i] == card)
+				if (listCardBase[i] == card)
 					continue;
 				float distanceToCard = Vector2.Distance(card.transform.position, listCardBase[i].gameObject.transform.position);
 				if (distanceToCard < distance)
@@ -103,6 +129,45 @@ namespace Ui.Game {
 			return listCardBase[index];
 
 		}
+
+		public void RandomCards()
+		{
+			int numberOfCardsDeath = (Int32)Mathf.Round(numberOfCards * rateTheDeath);
+			for (int i = 0; i < numberOfCardsDeath; i++)
+			{
+				var cardType = CardType.Death;
+				_listOfCards.Add(cardType);
+			}
+
+			float numberOfCardsEarth = Mathf.Round(numberOfCards * rateTheEarth);
+			for (int i = 0; i < numberOfCardsEarth; i++)
+			{
+				var cardType = CardType.Death;
+				_listOfCards.Add(cardType);
+			}
+
+			float numberOfCardsRain = Mathf.Round(numberOfCards * rateTheRain);
+			for (int i = 0; i < numberOfCardsRain; i++)
+			{
+				var cardType = CardType.Death;
+				_listOfCards.Add(cardType);
+			}
+
+			float numberOfCardsSun = Mathf.Round(numberOfCards * rateTheSun);
+			for (int i = 0; i < numberOfCardsSun; i++)
+			{
+				var cardType = CardType.Death;
+				_listOfCards.Add(cardType);
+			}
+
+			float numberOfCardsWind = Mathf.Round(numberOfCards * rateTheWind);
+			for (int i = 0; i < numberOfCardsWind; i++)
+			{
+				var cardType = CardType.Death;
+				_listOfCards.Add(cardType);
+			}
+
+		}
 	}
-	
+
 }

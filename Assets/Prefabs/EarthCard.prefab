@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parameters: {fileID: 0}
+  type: 0
   foreground: {fileID: 0}
   background: {fileID: 0}
   description: {fileID: 0}
