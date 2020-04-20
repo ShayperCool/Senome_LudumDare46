@@ -64,24 +64,24 @@ namespace Game.Events {
 		}
 		
 		private static IEventInVillage GetEvent(EventInVillage eventInVillage) {
-			switch (eventInVillage) {
-				case EventInVillage.Fire:
-					return new FireEvent();
-				case EventInVillage.Flood:
-					return new FloodEvent();
-				case EventInVillage.Plague:
-					return new PlagueEvent();
-				case EventInVillage.Fog:
-					return new FogEvent();
-				case EventInVillage.Earthquake:
-					return new EarthquakeEvent();
-				case EventInVillage.None:
-					return new NoneEvent();
-				case EventInVillage.Tornado:
-					return new TornadoEvent();
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
+			// switch (eventInVillage) {
+			// 	case EventInVillage.Fire:
+			// 		return new FireEvent();
+			// 	case EventInVillage.Flood:
+			// 		return new FloodEvent();
+			// 	case EventInVillage.Plague:
+			// 		return new PlagueEvent();
+			// 	case EventInVillage.Fog:
+			// 		return new FogEvent();
+			// 	case EventInVillage.Earthquake:
+			// 		return new EarthquakeEvent();
+			// 	case EventInVillage.None:
+			// 		return new NoneEvent();
+			// 	case EventInVillage.Tornado:
+				return new TornadoEvent();
+			// 	default:
+			// 		throw new ArgumentOutOfRangeException();
+			// }
 		}
 	}
 }

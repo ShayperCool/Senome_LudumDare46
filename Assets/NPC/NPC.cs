@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Game;
 using Game.Models;
+using Random = UnityEngine.Random;
 
 
 public class NPC : MonoBehaviour
@@ -13,6 +15,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private bool _grounded;
     [SerializeField] private Transform _groundTransform;
     [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private int Test = 0;
     [SerializeField] private int minXNpcPos;
     [SerializeField] private int maxXNpcPos;
 
@@ -22,6 +25,13 @@ public class NPC : MonoBehaviour
     private float _currentDir = 1;
     private float _targetX;
     private bool Flip;
+    private Vector3 _startPos;
+    private float direction = 1f;
+    private float directionY = 1f;
+    [SerializeField]private float forceY = 20f;
+    [SerializeField]private float forceX = 20f;
+    private Action _moveAction;
+    private Transform _tornadoTransform;
 
 
     void Start()
@@ -30,12 +40,13 @@ public class NPC : MonoBehaviour
         SelectPosition();
         _currentSpeed = _idleSpeedNpc;
         VillageController.Singleton.OnEventInVillage += ChangeState;
+        _moveAction = Move;
     }
 
     private void FixedUpdate()
     {
         _grounded = Physics2D.OverlapCircle(_groundTransform.position,_groundRange,_whatIsGround);       
-        Move();
+        _moveAction?.Invoke();
     }
 
     private void Update() 
@@ -78,6 +89,37 @@ public class NPC : MonoBehaviour
         rb.velocity = velocity;
         FlipNpc();
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        _startPos = transform.position;
+        _moveAction = Tornado;
+        rb.velocity = Vector2.zero;
+        _tornadoTransform = other.transform;
+    }
+
+    private void Tornado() {
+        if (transform.position.x > _tornadoTransform.position.x) {
+            direction = -1f;
+        }
+        else if (transform.position.x < _tornadoTransform.position.x) {
+            direction = 1f;
+        }
+
+        if (transform.position.y < 0f) {
+            directionY = 1f;
+        }        
+        else if (transform.position.y > 0f) {
+            directionY = 1f;
+        }
+        rb.AddForce(Vector2.right * direction * forceX + Vector2.up * directionY * forceY, ForceMode2D.Force);
+    }
+    
+    private void OnTriggerExit2D(Collider2D other) {
+        _moveAction = Move;
+    }
+    
+    
+    
 
     private void ChangeState(EventInVillage eventInVillage)
     {
