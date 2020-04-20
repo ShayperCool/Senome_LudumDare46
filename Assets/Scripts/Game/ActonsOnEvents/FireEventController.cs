@@ -11,6 +11,7 @@ namespace Game.ActonsOnEvents {
 		public GameObject Fire;
 		private bool _isRunning = false;
 		[SerializeField] private GameObject _rainGameObject;
+		public event Action OnEndFire;
 		
 		private void Start() {
 			Fire.SetActive(false);
@@ -36,7 +37,7 @@ namespace Game.ActonsOnEvents {
 			Fire.SetActive(false);
 			if (VillageController.Singleton.village.canceledByCombo) //Combo cards
 			{
-				//BurnHouse.HouseAfterFireEvent.
+				OnEndFire?.Invoke();
 				VillageController.Singleton.village.canceledByCombo = false;
 			}
 			else //Single card

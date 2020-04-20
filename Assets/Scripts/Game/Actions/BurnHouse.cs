@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.ActonsOnEvents;
 using UnityEngine;
 
 public class BurnHouse : MonoBehaviour
@@ -8,11 +9,8 @@ public class BurnHouse : MonoBehaviour
     [SerializeField] private Sprite _houseBurnted;
     [SerializeField] private Sprite _houseNormal;
 
-    public static event Action HouseAfterFireEvent;
-
-    private void Start()
-    {
-        HouseAfterFireEvent += HouseAfterFire;
+    private void Start() {
+        FireEventController.Singleton.OnEndFire += HouseAfterFire;
     }
     public void HouseAfterFire()
     {
