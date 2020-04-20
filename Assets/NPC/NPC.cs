@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Game;
+using Game.Models;
+
 
 public class NPC : MonoBehaviour
 {
@@ -27,6 +30,7 @@ public class NPC : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         SelectPosition();
         _currentSpeed = _idleSpeedNpc;
+        VillageController.Singleton.OnEventInVillage += ChangeState;
     }
 
     private void FixedUpdate()
@@ -51,25 +55,6 @@ public class NPC : MonoBehaviour
                 SelectPosition();
             }
         }
-
-        if(Test == 0)
-        {
-            ChangeState(0);
-        }
-        if(Test == 1)
-        {
-            ChangeState(1);
-        }
-        if (Test == 2) //Туман
-        {
-            ChangeState(2);
-        }
-        if (Test == 3) //Чума
-        {
-            ChangeState(3);
-        }
-
-
     }
 
     private void SelectPosition()
@@ -95,29 +80,38 @@ public class NPC : MonoBehaviour
         FlipNpc();
     }
 
-    private void ChangeState(int state)
+    private void ChangeState(EventInVillage eventInVillage)
     {
-        if (state == 0f) //Обычное состояние
+        if (eventInVillage == EventInVillage.None) //Обычное состояние
         {
-            _currentSpeed = _idleSpeedNpc;
-            StopAllCoroutines();
+            OnChangeState(_idleSpeedNpc , Color.white);
         }
-        else if (state == 1f) //Пожар
+        else if (eventInVillage == EventInVillage.Fire) //Пожар
         {
-            _currentSpeed = _dangerousSpeedNpc;
+            OnChangeState(_dangerousSpeedNpc, Color.white);
             StartCoroutine(DangerousJumps());
         }
-        else if (state == 2f) //Туман
+        else if (eventInVillage == EventInVillage.Fog) //Туман
         {
-            _currentSpeed = _slowSpeedNpc;
-            StopAllCoroutines();
+            OnChangeState(_slowSpeedNpc, Color.white);
         }
-        else if (state == 3f) //Чума
+        else if (eventInVillage == EventInVillage.Plague) //Чума
         {
-            _currentSpeed = _slowSpeedNpc;
-            gameObject.GetComponent<SpriteRenderer>().color = Color.green;
-            StopAllCoroutines();
+            OnChangeState(_slowSpeedNpc, Color.green);
         }
+        else if (eventInVillage == EventInVillage.Flood)
+        {
+            OnChangeState(0f , Color.white);
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+
+        }
+    }
+
+    private void OnChangeState(float _newSpeed, Color _colorNpc)
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = _colorNpc;
+        _currentSpeed = _newSpeed;
+        StopAllCoroutines();
     }
 
     private void JumpNpc() //  Главный метод прыжка NPC
