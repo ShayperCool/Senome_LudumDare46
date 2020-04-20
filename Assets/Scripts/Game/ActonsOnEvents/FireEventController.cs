@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Game.Models;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace Game.ActonsOnEvents {
 		public static FireEventController Singleton { get; private set; }
 		public GameObject Fire;
 		private bool _isRunning = false;
+		[SerializeField] private GameObject _rainGameObject;
 		
 		private void Start() {
 			Fire.SetActive(false);
@@ -31,6 +33,16 @@ namespace Game.ActonsOnEvents {
 		private void OnEventEnd() {
 			_isRunning = false;
 			Fire.SetActive(false);
+			if (VillageController.Singleton.village.canceledByCombo) //Combo cards
+			{
+
+				VillageController.Singleton.village.canceledByCombo = false;
+			}
+			else //Single card
+			{
+				StartCoroutine(StartRaining());
+			}
+
 		}
 		
 		void InitSingleton() {
@@ -38,6 +50,12 @@ namespace Game.ActonsOnEvents {
 				Destroy(gameObject);
 			else
 				Singleton = this;
+		}
+		private IEnumerator StartRaining()
+		{
+			_rainGameObject.SetActive(true);
+			yield return new WaitForSeconds(5);
+			_rainGameObject.SetActive(false);
 		}
 		
 	}
