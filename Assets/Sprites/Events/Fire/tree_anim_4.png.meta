@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: b20535562d48cf44a908e0767d6685fa
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 437098573736994130
+    second: tree_anim_4_0
+  - first:
+      213: 5448713317258989471
+    second: tree_anim_4_1
+  - first:
+      213: 1815025048723571727
+    second: tree_anim_4_2
+  - first:
+      213: 4921013954281956882
+    second: tree_anim_4_3
+  - first:
+      213: 6639857481475953663
+    second: tree_anim_4_4
+  - first:
+      213: -3565886266286531841
+    second: tree_anim_4_5
+  - first:
+      213: 7650279187098330261
+    second: tree_anim_4_6
+  - first:
+      213: -744499852421299069
+    second: tree_anim_4_7
+  - first:
+      213: -3943291193235256114
+    second: tree_anim_4_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +98,222 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: tree_anim_4_0
+      rect:
+        serializedVersion: 2
+        x: 1761
+        y: 1136
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2556c6346d2e01600800000000000000
+      internalID: 437098573736994130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_anim_4_1
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 1094
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9f892eb4e7bd9b40800000000000000
+      internalID: 5448713317258989471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_anim_4_2
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 1094
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f04ca975aa3403910800000000000000
+      internalID: 1815025048723571727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_anim_4_3
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 1094
+        width: 28
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21667b76e14fa4440800000000000000
+      internalID: 4921013954281956882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_anim_4_4
+      rect:
+        serializedVersion: 2
+        x: 1661
+        y: 1085
+        width: 28
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff3189e2333852c50800000000000000
+      internalID: 6639857481475953663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_anim_4_5
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 302
+        width: 268
+        height: 552
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffa1c8c655d638ec0800000000000000
+      internalID: -3565886266286531841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_anim_4_6
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 302
+        width: 249
+        height: 516
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5946f8343604b2a60800000000000000
+      internalID: 7650279187098330261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_anim_4_7
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 320
+        width: 255
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384091924510ba5f0800000000000000
+      internalID: -744499852421299069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tree_anim_4_8
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 320
+        width: 254
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecc494d5d8d9649c0800000000000000
+      internalID: -3943291193235256114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

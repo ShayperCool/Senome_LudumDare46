@@ -12,10 +12,13 @@ namespace Game.ActonsOnEvents {
 		private bool _isRunning = false;
 		[SerializeField] private GameObject _rainGameObject;
 		public event Action OnEndFire;
-		
+
+		private void Awake()
+		{
+			InitSingleton();
+		}
 		private void Start() {
 			Fire.SetActive(false);
-			InitSingleton();
 			VillageController.Singleton.OnEventInVillage += OnEventInVillage;
 		}
 
