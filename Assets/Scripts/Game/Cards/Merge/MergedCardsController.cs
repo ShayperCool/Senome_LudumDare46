@@ -23,9 +23,16 @@ namespace Game.Cards.Merge {
 			"dr".SumOfChars()
 		};
 
+		private static readonly HashSet<int> _advancedPatterns = new HashSet<int>() {
+			"sr".SumOfChars()
+		};
+		
 		private static readonly Dictionary<int, ActionInVillage> _actionsList = new Dictionary<int, ActionInVillage>();
 		
 		public static bool CanMerge(string pattern) {
+			if (VillageController.Singleton.currentGameMode == VillageController.GameMode.Normal &&
+			    _advancedPatterns.Contains(pattern.SumOfChars()))
+				return false;
 			return _cardsPatterns.Contains(pattern.SumOfChars());
 		}
 		

@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 namespace Game {
 	public class VillageController : MonoBehaviour {
 		public static VillageController Singleton { get; private set; }
-		
+		public GameMode currentGameMode;
 		public Village village;
 		public int maxStartVillagers = 250;
 		public int minStartVillagers = 150;
@@ -20,6 +20,7 @@ namespace Game {
 		private void Awake() {
 			InitSingleton();
 			InitVillage();
+			currentGameMode = (GameMode) PlayerPrefs.GetInt("game_mode");
 		}
 
 		private void InitSingleton() {
@@ -49,7 +50,12 @@ namespace Game {
 			
 			OnEventInVillage?.Invoke(village.currentEvent);
 		}
-		
+
+
+		public enum GameMode {
+			Normal,
+			Advanced,
+		}
 		
 		private void OnDestroy() {
 			StandardEvents.GameStop.Cancel();
