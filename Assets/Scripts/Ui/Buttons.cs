@@ -9,8 +9,9 @@ using Game.Events.PlayerEvents;
 public class Buttons : MonoBehaviour
 {
     public int maxCountCards = 8;
-    public void StartGame()
+    public void StartGame(int mode)
     {
+        PlayerPrefs.SetInt("game_mode", mode);
         SceneManager.LoadScene(1);
     }
 

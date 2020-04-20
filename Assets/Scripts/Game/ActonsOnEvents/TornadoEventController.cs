@@ -25,14 +25,12 @@ namespace Game.ActonsOnEvents {
 
 		private void OnEventStart() {
 			_isRunning = true;
-			Debug.Log("Анимация Торнадо");
 			Tornado.SetActive(true);
 		}
 
 
 		private void OnEventEnd() {
 			_isRunning = false;
-			Debug.Log("Конец Анимации Торнадо");
 			Tornado.SetActive(false);
 		}
 		

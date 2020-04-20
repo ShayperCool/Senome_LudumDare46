@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Game.Events.AiEvents;
 using Game.Events.PlayerEvents;
 using Game.Models;
+using Ui.Game;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,6 +28,10 @@ namespace Game.Events {
 			GrowUpCancelToken = new CancellationTokenSource();
 			GrowUp();
 			RandomEventSpawn();
+
+			int _mode = PlayerPrefs.GetInt("game_mode");
+			//if (_mode == 0) NumberMovesUntilTheEndGame = CardsContainer.Singleton.numberMovesSimple;
+			//else NumberMovesUntilTheEndGame = CardsContainer.Singleton.numberMovesMedium;
 		}
 		
 		private static async void GrowUp() {

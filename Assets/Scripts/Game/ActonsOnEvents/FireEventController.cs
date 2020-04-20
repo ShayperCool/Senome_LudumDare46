@@ -24,15 +24,12 @@ namespace Game.ActonsOnEvents {
 		}
 
 		private void OnEventStart() {
-			_isRunning = true;
-			Debug.Log("Анимация огня");
-			Fire.SetActive(true);
+			_isRunning = true;			Fire.SetActive(true);
 		}
 
 
 		private void OnEventEnd() {
 			_isRunning = false;
-			Debug.Log("Конец анимации огня");
 			Fire.SetActive(false);
 		}
 		

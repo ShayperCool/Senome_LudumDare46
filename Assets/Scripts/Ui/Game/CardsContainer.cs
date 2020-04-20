@@ -22,18 +22,26 @@ namespace Ui.Game
 		public RectTransform cards;
 		private float _cardsContainerY;
 		public List<CardBase> listCardBase = new List<CardBase>();
-		[Header("List Cards")]
-		public int numberOfCards;
-		public float rateTheEarth;
-		public float rateTheWind;
-		public float rateTheDeath;
-		public float rateTheSun;
-		public float rateTheRain;
+
+		[Header("List Cards Simple")]
+		public CombinationVariant[] variantSimple;
+
+		[Header("List Cards Medium")]
+		public int numberOfCardsMedium;
+		public int numberMovesMedium;
+		public float rateTheEarthMedium;
+		public float rateTheWindMedium;
+		public float rateTheDeathMedium;
+		public float rateTheSunMedium;
+		public float rateTheRainMedium;
 		private List<CardType> _listOfCards = new List<CardType>();
+
+		private int _mode;
 
 		private void Awake()
 		{
 			RandomCards();
+			_mode = PlayerPrefs.GetInt("game_mode");
 		}
 
 		private void Start()
@@ -129,6 +137,32 @@ namespace Ui.Game
 
 		public void RandomCards()
 		{
+			int indexVariantSimple = Random.Range(0, variantSimple.Length);
+			
+			int numberOfCards;
+			float rateTheEarth;
+			float rateTheWind;
+			float rateTheDeath;
+			float rateTheSun;
+			float rateTheRain;
+			if(_mode==1)
+			{
+				numberOfCards= numberOfCardsMedium;
+				rateTheEarth = rateTheEarthMedium;
+				rateTheWind = rateTheWindMedium;
+				rateTheDeath = rateTheDeathMedium;
+				rateTheSun= rateTheSunMedium;
+				rateTheRain= rateTheRainMedium;
+			}
+			else
+			{
+				numberOfCards = variantSimple[indexVariantSimple].numberOfCardsSimple;
+				rateTheEarth = variantSimple[indexVariantSimple].rateTheEarthSimple;
+				rateTheWind = variantSimple[indexVariantSimple].rateTheWindSimple;
+				rateTheDeath = variantSimple[indexVariantSimple].rateTheDeathSimple;
+				rateTheSun = variantSimple[indexVariantSimple].rateTheSunSimple;
+				rateTheRain = variantSimple[indexVariantSimple].rateTheRainSimple;
+			}
 			int numberOfCardsDeath = (Int32)Mathf.Round(numberOfCards * rateTheDeath);
 			for (int i = 0; i < numberOfCardsDeath; i++)
 			{

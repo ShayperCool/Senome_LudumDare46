@@ -25,14 +25,12 @@ namespace Game.ActonsOnEvents {
 
 		private void OnEventStart() {
 			_isRunning = true;
-			Debug.Log("Анимация Тумана"); 
 			Fog.SetActive(true);
 		}
 
 
 		private void OnEventEnd() {
 			_isRunning = false;
-			Debug.Log("Конец анимации Тумана");
 			Fog.SetActive(false);
 		}
 		
