@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Events;
 using UnityEngine;
 
 namespace Game {
@@ -14,6 +15,7 @@ namespace Game {
 
 		public void GameOver() {
 			Time.timeScale = 0f;
+			StandardEvents.GameStop.Cancel();
 			Debug.Log("Игра закончена");
 		}
 		
