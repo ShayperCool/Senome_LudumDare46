@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fire: {fileID: 1673188775}
+  _rainGameObject: {fileID: 0}
 --- !u!114 &111787513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1029,6 +1030,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4607049700647132896, guid: b0e2d5d0edb79fd4680d67dc62045fc4,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4607049700647132897, guid: b0e2d5d0edb79fd4680d67dc62045fc4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1119,6 +1125,16 @@ PrefabInstance:
       propertyPath: maxXNpcPos
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 4607049700647132909, guid: b0e2d5d0edb79fd4680d67dc62045fc4,
+        type: 3}
+      propertyPath: forceY
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4607049700647132909, guid: b0e2d5d0edb79fd4680d67dc62045fc4,
+        type: 3}
+      propertyPath: forceX
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0e2d5d0edb79fd4680d67dc62045fc4, type: 3}
 --- !u!1 &689045180
@@ -1172,7 +1188,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689045180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -5.576, z: -56.679688}
+  m_LocalPosition: {x: 0.02, y: -5.576, z: 0}
   m_LocalScale: {x: 43.41119, y: 3.1121113, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2640,7 +2656,6 @@ GameObject:
   - component: {fileID: 1806999672}
   - component: {fileID: 1806999674}
   - component: {fileID: 1806999675}
-  - component: {fileID: 1806999676}
   m_Layer: 0
   m_Name: AnimationTornado
   m_TagString: Untagged
@@ -2772,28 +2787,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a82f7cb8ee4a14382ff0081c8010f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yForce: 1
-  xForce: 1
---- !u!249 &1806999676
-AreaEffector2D:
-  serializedVersion: 2
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806999670}
-  m_Enabled: 1
-  m_UseColliderMask: 1
-  m_ColliderMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_UseGlobalAngle: 0
-  m_ForceAngle: 90
-  m_ForceMagnitude: 35
-  m_ForceVariation: 0
-  m_ForceTarget: 0
-  m_Drag: 0
-  m_AngularDrag: 0
+  speed: 3
+  minX: -17
+  maxX: 17
 --- !u!1 &1864336779
 GameObject:
   m_ObjectHideFlags: 0

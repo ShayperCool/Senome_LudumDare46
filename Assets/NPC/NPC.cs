@@ -109,7 +109,7 @@ public class NPC : MonoBehaviour
             directionY = 1f;
         }        
         else if (transform.position.y > 0f) {
-            directionY = 1f;
+            directionY = -1f;
         }
         rb.AddForce(Vector2.right * direction * forceX + Vector2.up * directionY * forceY, ForceMode2D.Force);
     }
