@@ -51,13 +51,13 @@ namespace Game.Cards.Merge {
 			_solveTable.Add(EventInVillage.Flood,
 				new HashSet<int>{
 					"we".SumOfChars(),
-				});
-			_solveTable.Add(EventInVillage.AddHumans,
-				new HashSet<int>{
-					"dds".SumOfChars(),
-					"srw".SumOfChars(),
-					"drr".SumOfChars(),
-				});
+				});			
+			// _solveTable.Add(EventInVillage.AddHumans,
+			// 	new HashSet<int>{
+			// 		"dds".SumOfChars(),
+			// 		"srw".SumOfChars(),
+			// 		"drr".SumOfChars(),
+			// 	});
 		}
 		
 		public static void ProcessVillage(string pattern, Village village) {
