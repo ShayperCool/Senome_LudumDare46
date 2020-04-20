@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Game.Events.AiEvents;
+using Game.Events.PlayerEvents;
 using Game.Models;
 using Random = UnityEngine.Random;
 
@@ -66,6 +68,8 @@ namespace Game.Events {
 					return new EarthquakeEvent();
 				case EventInVillage.None:
 					return new NoneEvent();
+				case EventInVillage.Tornado:
+					return new TornadoEvent();
 				default:
 					throw new ArgumentOutOfRangeException();
 			}

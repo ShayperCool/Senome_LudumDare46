@@ -1,6 +1,6 @@
 ﻿using Game.Models;
 
-namespace Game.Events {
+namespace Game.Events.AiEvents {
 	public class DeathEvent : IEventInVillage {
 
 		private static readonly int _toKillCount = 30;

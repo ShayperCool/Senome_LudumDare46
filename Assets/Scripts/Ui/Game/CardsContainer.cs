@@ -44,9 +44,13 @@ namespace Ui.Game {
 		}
 
 		public void MergeCards(CardBase card, CardBase card2) {
-			var mergedCard = Instantiate(mergedCardsPrefab, cards).GetComponent<MergedCard>();
+			var mergedCardObject = Instantiate(mergedCardsPrefab, cards);
+			var mergedCard = mergedCardObject.GetComponent<MergedCard>();
 			AddCardToMergedCard(mergedCard, card);
 			AddCardToMergedCard(mergedCard, card2);
+			var mergedCardUi = mergedCardObject.GetComponent<CardUI>();
+			mergedCardUi.OnDrop += OnDrop;
+			
 			listCardBase.Add(mergedCard);
 		}
 
@@ -84,7 +88,7 @@ namespace Ui.Game {
 		public CardBase GetClosestCard(CardBase card)
 		{
 			float distance = Mathf.Infinity;
-			int index=0;
+			int index = 0;
 			for(int i = 0; i < listCardBase.Count; i++)
 			{
 				if(listCardBase[i] == card)

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Ui.Game;
 using Game;
+using Game.Events.PlayerEvents;
 
 public class Buttons : MonoBehaviour
 {

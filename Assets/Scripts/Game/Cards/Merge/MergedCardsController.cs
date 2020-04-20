@@ -22,8 +22,8 @@ namespace Game.Cards.Merge {
 			"ds".SumOfChars(),
 			"dr".SumOfChars()
 		};
-		
-		//private static readonly Dictionary<int, >
+
+		private static readonly Dictionary<int, ActionInVillage> _actionsList = new Dictionary<int, ActionInVillage>();
 		
 		public static bool CanMerge(string pattern) {
 			return _cardsPatterns.Contains(pattern.SumOfChars());
@@ -51,19 +51,18 @@ namespace Game.Cards.Merge {
 			_solveTable.Add(EventInVillage.Flood,
 				new HashSet<int>{
 					"we".SumOfChars(),
-				});			
-			// _solveTable.Add(EventInVillage.AddHumans,
-			// 	new HashSet<int>{
-			// 		"dds".SumOfChars(),
-			// 		"srw".SumOfChars(),
-			// 		"drr".SumOfChars(),
-			// 	});
+				});
+			
+			_actionsList.Add("dds".SumOfChars(), ActionInVillage.NewHumans);
+			_actionsList.Add("srw".SumOfChars(), ActionInVillage.NewHumans);
+			_actionsList.Add("drr".SumOfChars(), ActionInVillage.NewHumans);
 		}
 		
 		public static void ProcessVillage(string pattern, Village village) {
 			var  state = village.currentEvent;
 			if (_solveTable.ContainsKey(state) && _solveTable[state].Contains(pattern.SumOfChars()))
 				village.currentEvent = EventInVillage.None;
+			
 		}
 		
 	}
