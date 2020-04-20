@@ -25,14 +25,12 @@ namespace Game.ActonsOnEvents {
 
 		private void OnEventStart() {
 			_isRunning = true;
-			Debug.Log("Анимация Наводнения");
 			Flood.SetActive(true);
 		}
 
 
 		private void OnEventEnd() {
 			_isRunning = false;
-			Debug.Log("Конец анимации Наводнениея");
 			Flood.SetActive(false);
 		}
 		

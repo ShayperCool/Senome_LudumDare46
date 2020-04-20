@@ -40,7 +40,6 @@ namespace Game.ActonsOnEvents
 		private void OnEventStart()
 		{
 			_isRunning = true;
-			Debug.Log("Анимация Землетрясения");
 			Earthquake.SetActive(true);
 
 			//while (_isRunning)
@@ -58,7 +57,6 @@ namespace Game.ActonsOnEvents
 		private void OnEventEnd()
 		{
 			_isRunning = false;
-			Debug.Log("Конец анимацииЗемлетрясения");
 			Earthquake.SetActive(false);
 		}
 

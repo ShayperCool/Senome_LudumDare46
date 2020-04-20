@@ -608,12 +608,16 @@ MonoBehaviour:
   canvas: {fileID: 1010439580}
   cards: {fileID: 752337878}
   listCardBase: []
-  numberOfCards: 29
-  rateTheEarth: 0.14
-  rateTheWind: 0.24
-  rateTheDeath: 0.17
-  rateTheSun: 0.24
-  rateTheRain: 0.2
+  variantSimple:
+  - {fileID: 11400000, guid: 23c0252234ce412469693227ab84e4ff, type: 2}
+  - {fileID: 11400000, guid: 48111d9a6db194f4d90b68da3e317df0, type: 2}
+  numberOfCardsMedium: 30
+  numberMovesMedium: 17
+  rateTheEarthMedium: 0.13
+  rateTheWindMedium: 0.17
+  rateTheDeathMedium: 0.17
+  rateTheSunMedium: 0.3
+  rateTheRainMedium: 0.2
 --- !u!1 &397466550
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +725,7 @@ GameObject:
   - component: {fileID: 462955678}
   - component: {fileID: 462955679}
   - component: {fileID: 462955680}
+  - component: {fileID: 462955681}
   m_Layer: 0
   m_Name: flood
   m_TagString: Untagged
@@ -806,6 +811,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strength: 0.025
   strengthY: 0.2
+--- !u!95 &462955681
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462955677}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f1e5bb45e2e88144ac1eb0ed79bf9b6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &539074813
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,6 +2083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09c6bbfa6a2f5b40bf08a6b1a208fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentGameMode: 0
   maxStartVillagers: 200
   minStartVillagers: 150
 --- !u!4 &1292788120
@@ -3068,8 +3093,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 0.12156863}
+      minColor: {r: 0.0990566, g: 0.19124259, b: 1, a: 1}
+      maxColor: {r: 0.6650944, g: 0.74118173, b: 1, a: 0.12156863}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
