@@ -59,7 +59,12 @@ namespace Game.Cards.Merge {
 				new HashSet<int>{
 					"we".SumOfChars(),
 				});
-			
+			_solveTable.Add(EventInVillage.Fog,
+					new HashSet<int>{
+						"sd".SumOfChars(),
+					}
+				);
+
 			_actionsList.Add("dds".SumOfChars(), ActionInVillage.NewHumans);
 			_actionsList.Add("srw".SumOfChars(), ActionInVillage.NewHumans);
 			_actionsList.Add("drr".SumOfChars(), ActionInVillage.NewHumans);
