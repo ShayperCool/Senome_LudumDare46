@@ -19,7 +19,7 @@ namespace Ui.Game {
 			villagersCount.text = "Villagers: \n" + VillageController.Singleton.village.villagersCount;
 		}
 		
-		private void OnEventInVillage(Village.State state) {
+		private void OnEventInVillage(EventInVillage eventInVillage) {
 			UpdateValues();
 		}
 		

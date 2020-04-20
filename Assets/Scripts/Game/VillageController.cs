@@ -14,7 +14,7 @@ namespace Game {
 		public Village village;
 		public int maxStartVillagers = 250;
 		public int minStartVillagers = 150;
-		public event Action<Village.State> OnEventInVillage;
+		public event Action<EventInVillage> OnEventInVillage;
 		public event Action OnStateChange;
 
 		private void Awake() {
@@ -47,7 +47,7 @@ namespace Game {
 			if(stateBefore != village.currentState && stateBefore == Village.State.Idle)
 				StandardEvents.GrowUpCancelToken.Cancel();
 			
-			OnEventInVillage?.Invoke(village.currentState);
+			OnEventInVillage?.Invoke(village.currentEvent);
 		}
 		
 		
