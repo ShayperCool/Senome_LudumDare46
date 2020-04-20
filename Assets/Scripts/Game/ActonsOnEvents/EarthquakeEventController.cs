@@ -1,4 +1,5 @@
 ﻿using System;
+using Game.Actions;
 using Game.Models;
 using UnityEngine;
 
@@ -40,23 +41,16 @@ namespace Game.ActonsOnEvents
 		private void OnEventStart()
 		{
 			_isRunning = true;
+			EarthQuakeShake.Singleton.shake = true;
 			Earthquake.SetActive(true);
-
-			//while (_isRunning)
-			//{
-			//	if (_currentForce <= 0 && _currentForce != -forceEarthquake) _currentForce -= 0.1f;
-			//	if (_currentForce > 0 && _currentForce != forceEarthquake) _currentForce += 0.1f;
-				
-			//	Vector3 newPosition = _startPosition;
-			//	newPosition.y += _currentForce;
-			//	cameraEarthquake.transform.position = newPosition;
-			//}			
+			
 		}
 
 
 		private void OnEventEnd()
 		{
 			_isRunning = false;
+			EarthQuakeShake.Singleton.UnShake();
 			if (VillageController.Singleton.village.canceledByCombo) {
 				//Действия
 			}
