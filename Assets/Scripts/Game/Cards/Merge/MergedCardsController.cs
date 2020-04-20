@@ -23,6 +23,8 @@ namespace Game.Cards.Merge {
 			"dr".SumOfChars()
 		};
 		
+		//private static readonly Dictionary<int, >
+		
 		public static bool CanMerge(string pattern) {
 			return _cardsPatterns.Contains(pattern.SumOfChars());
 		}
@@ -59,7 +61,7 @@ namespace Game.Cards.Merge {
 		}
 		
 		public static void ProcessVillage(string pattern, Village village) {
-			var state = village.currentEvent;
+			var  state = village.currentEvent;
 			if (_solveTable.ContainsKey(state) && _solveTable[state].Contains(pattern.SumOfChars()))
 				village.currentEvent = EventInVillage.None;
 		}

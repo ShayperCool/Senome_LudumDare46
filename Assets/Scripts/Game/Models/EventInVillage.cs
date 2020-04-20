@@ -7,6 +7,5 @@
 		Earthquake,
 		None,
 		Tornado,
-		AddHumans
 	}
 }
