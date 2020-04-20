@@ -53,11 +53,8 @@ namespace Ui.Game
 
 		public void SpawnCard()
 		{
-			int cardIndex = Random.Range(0, cardPrefabs.Length);
-			//int listIndex = Random.Range(0, _listOfCards.Count);
-			//int cardIndex = _listCards[listIndex];
-			var card = cardPrefabs[cardIndex];
-			var cardUi = Instantiate(card, cards).GetComponent<CardUI>();
+			int listIndex = Random.Range(0, _listOfCards.Count);
+			var cardUi = Instantiate(getCardBuyType(_listOfCards[listIndex]), cards).GetComponent<CardUI>();
 			//Callback for spawn new card
 			cardUi.OnDrop = OnDrop;
 			listCardBase.Add(cardUi.card);
@@ -142,31 +139,46 @@ namespace Ui.Game
 			float numberOfCardsEarth = Mathf.Round(numberOfCards * rateTheEarth);
 			for (int i = 0; i < numberOfCardsEarth; i++)
 			{
-				var cardType = CardType.Death;
+				var cardType = CardType.Earth;
 				_listOfCards.Add(cardType);
 			}
 
 			float numberOfCardsRain = Mathf.Round(numberOfCards * rateTheRain);
 			for (int i = 0; i < numberOfCardsRain; i++)
 			{
-				var cardType = CardType.Death;
+				var cardType = CardType.Rain;
 				_listOfCards.Add(cardType);
 			}
 
 			float numberOfCardsSun = Mathf.Round(numberOfCards * rateTheSun);
 			for (int i = 0; i < numberOfCardsSun; i++)
 			{
-				var cardType = CardType.Death;
+				var cardType = CardType.Sun;
 				_listOfCards.Add(cardType);
 			}
 
 			float numberOfCardsWind = Mathf.Round(numberOfCards * rateTheWind);
 			for (int i = 0; i < numberOfCardsWind; i++)
 			{
-				var cardType = CardType.Death;
+				var cardType = CardType.Wind;
 				_listOfCards.Add(cardType);
 			}
 
+		}
+
+		private GameObject getCardBuyType(CardType cardType)
+		{
+			if (cardType == CardType.Death)
+				return cardPrefabs[0];
+			if (cardType == CardType.Earth)
+				return cardPrefabs[1];
+			if (cardType == CardType.Rain)
+				return cardPrefabs[2];
+			if (cardType == CardType.Sun)
+				return cardPrefabs[3];
+			if (cardType == CardType.Wind)
+				return cardPrefabs[4];
+			return null;
 		}
 	}
 

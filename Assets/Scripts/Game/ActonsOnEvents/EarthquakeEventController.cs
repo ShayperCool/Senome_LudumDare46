@@ -9,10 +9,21 @@ namespace Game.ActonsOnEvents
 
 		public static EarthquakeEventController Singleton { get; private set; }
 
+
+		public GameObject Earthquake;
+		public GameObject cameraEarthquake;
+		public float forceEarthquake;
+		private Vector3 _startPosition;
+		private float _currentForce = 0;
+
 		private bool _isRunning = false;
 
 		private void Start()
 		{
+			Earthquake.SetActive(false);
+			_startPosition = cameraEarthquake.transform.position;
+
+
 			InitSingleton();
 			VillageController.Singleton.OnEventInVillage += OnEventInVillage;
 		}
@@ -30,6 +41,17 @@ namespace Game.ActonsOnEvents
 		{
 			_isRunning = true;
 			Debug.Log("Анимация Землетрясения");
+			Earthquake.SetActive(true);
+
+			while (_isRunning)
+			{
+				if (_currentForce <= 0 && _currentForce != -forceEarthquake) _currentForce -= 0.1f;
+				if (_currentForce > 0 && _currentForce != forceEarthquake) _currentForce += 0.1f;
+				
+				Vector3 newPosition = _startPosition;
+				newPosition.y += _currentForce;
+				cameraEarthquake.transform.position = newPosition;
+			}			
 		}
 
 
@@ -37,6 +59,7 @@ namespace Game.ActonsOnEvents
 		{
 			_isRunning = false;
 			Debug.Log("Конец анимацииЗемлетрясения");
+			Earthquake.SetActive(false);
 		}
 
 		void InitSingleton()

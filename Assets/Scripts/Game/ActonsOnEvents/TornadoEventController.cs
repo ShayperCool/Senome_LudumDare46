@@ -6,10 +6,11 @@ namespace Game.ActonsOnEvents {
 	public class TornadoEventController : MonoBehaviour {
 		
 		public static TornadoEventController Singleton { get; private set; }
-
+		public GameObject Tornado;
 		private bool _isRunning = false;
 		
 		private void Start() {
+			Tornado.SetActive(false);
 			InitSingleton();
 			VillageController.Singleton.OnEventInVillage += OnEventInVillage;
 		}
@@ -25,12 +26,14 @@ namespace Game.ActonsOnEvents {
 		private void OnEventStart() {
 			_isRunning = true;
 			Debug.Log("Анимация Торнадо");
+			Tornado.SetActive(true);
 		}
 
 
 		private void OnEventEnd() {
 			_isRunning = false;
 			Debug.Log("Конец Анимации Торнадо");
+			Tornado.SetActive(false);
 		}
 		
 		void InitSingleton() {

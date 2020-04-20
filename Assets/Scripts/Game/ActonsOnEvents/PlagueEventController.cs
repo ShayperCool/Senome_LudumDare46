@@ -6,10 +6,11 @@ namespace Game.ActonsOnEvents {
 	public class PlagueEventController : MonoBehaviour {
 		
 		public static PlagueEventController Singleton { get; private set; }
-
+		public GameObject Plague;
 		private bool _isRunning = false;
 		
 		private void Start() {
+			Plague.SetActive(false);
 			InitSingleton();
 			VillageController.Singleton.OnEventInVillage += OnEventInVillage;
 		}
@@ -25,12 +26,14 @@ namespace Game.ActonsOnEvents {
 		private void OnEventStart() {
 			_isRunning = true;
 			Debug.Log("Анимация Чумы");
+			Plague.SetActive(true);
 		}
 
 
 		private void OnEventEnd() {
 			_isRunning = false;
 			Debug.Log("Конец анимации Чумы");
+			Plague.SetActive(false);
 		}
 		
 		void InitSingleton() {
