@@ -8,6 +8,7 @@ namespace Game.Models {
 		public int villagersCount;
 		public State currentState = State.Idle;
 		public EventInVillage currentEvent = EventInVillage.None;
+		public bool canceledByCombo = false;
 		public float Coefficient => villagersCount / _villagersOnStart;
 		private readonly float _villagersOnStart;
 
