@@ -2,6 +2,7 @@
 using System.Collections;
 using Game.Models;
 using UnityEngine;
+using Game;
 
 namespace Game.ActonsOnEvents {
 	public class FireEventController : MonoBehaviour {
@@ -35,7 +36,7 @@ namespace Game.ActonsOnEvents {
 			Fire.SetActive(false);
 			if (VillageController.Singleton.village.canceledByCombo) //Combo cards
 			{
-
+				//BurnHouse.HouseAfterFireEvent.
 				VillageController.Singleton.village.canceledByCombo = false;
 			}
 			else //Single card

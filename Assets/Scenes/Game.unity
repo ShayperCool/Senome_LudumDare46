@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 101853539}
   - component: {fileID: 101853541}
   - component: {fileID: 101853540}
+  - component: {fileID: 101853542}
   m_Layer: 0
   m_Name: house_1
   m_TagString: Untagged
@@ -218,6 +219,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &101853542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101853538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1755713b1824411459720b4bc36e87f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseBurnted: {fileID: 0}
+  _houseNormal: {fileID: 0}
 --- !u!1 &181777033
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,6 +838,7 @@ GameObject:
   - component: {fileID: 644806187}
   - component: {fileID: 644806189}
   - component: {fileID: 644806188}
+  - component: {fileID: 644806190}
   m_Layer: 0
   m_Name: house_1 (1)
   m_TagString: Untagged
@@ -908,6 +924,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &644806190
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644806186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 23b73379a87d496478aa219e5febee1a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &852732777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1826,6 +1861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fire: {fileID: 1819371208}
+  _rainGameObject: {fileID: 1762523051}
 --- !u!114 &1412188728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,6 +2338,7 @@ GameObject:
   - component: {fileID: 1600983714}
   - component: {fileID: 1600983716}
   - component: {fileID: 1600983715}
+  - component: {fileID: 1600983717}
   m_Layer: 0
   m_Name: house_2
   m_TagString: Untagged
@@ -2387,6 +2424,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1600983717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600983713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1755713b1824411459720b4bc36e87f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseBurnted: {fileID: 0}
+  _houseNormal: {fileID: 0}
 --- !u!1 &1718081290
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,6 +2449,7 @@ GameObject:
   - component: {fileID: 1718081291}
   - component: {fileID: 1718081293}
   - component: {fileID: 1718081292}
+  - component: {fileID: 1718081294}
   m_Layer: 0
   m_Name: house_2 (1)
   m_TagString: Untagged
@@ -2483,6 +2535,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1718081294
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718081290}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa730624eee96cf4d88dd252c383af15, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1723974152
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,12 +2662,12 @@ GameObject:
   - component: {fileID: 1762523053}
   - component: {fileID: 1762523052}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: RainSysteam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1762523052
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -7344,6 +7415,7 @@ GameObject:
   - component: {fileID: 1775527348}
   - component: {fileID: 1775527350}
   - component: {fileID: 1775527349}
+  - component: {fileID: 1775527351}
   m_Layer: 0
   m_Name: house_5
   m_TagString: Untagged
@@ -7430,6 +7502,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1775527351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775527347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1755713b1824411459720b4bc36e87f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _houseBurnted: {fileID: 0}
+  _houseNormal: {fileID: 0}
 --- !u!1 &1809943003
 GameObject:
   m_ObjectHideFlags: 0
@@ -7540,6 +7626,7 @@ GameObject:
   - component: {fileID: 1831565602}
   - component: {fileID: 1831565604}
   - component: {fileID: 1831565603}
+  - component: {fileID: 1831565605}
   m_Layer: 0
   m_Name: house_5 (1)
   m_TagString: Untagged
@@ -7613,7 +7700,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 143c72a4fcbe3e04cbe7c82f57929918, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7625,6 +7712,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1831565605
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831565601}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f96dd850c8fba61449212cd2c1bb6a4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1880981177
 GameObject:
   m_ObjectHideFlags: 0
