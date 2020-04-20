@@ -13,7 +13,7 @@ namespace Game {
 		
 		public Village village;
 		public int maxStartVillagers = 250;
-		public int minStartVillagers = 150;
+		public int minStartVillagers = 200;
 		public event Action<Village.State> OnEventInVillage;
 		public event Action OnStateChange;
 
