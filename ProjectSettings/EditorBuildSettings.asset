@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 844fc9ad1ff73bb48855f6d8d0f0e596
   - enabled: 1
-    path: Assets/Scenes/Zheka.unity
-    guid: b6de28d7645a0b44ca2a51c0371e4bba
-  - enabled: 1
-    path: Assets/Scenes/ShayperCoolScene.unity
-    guid: e93884f6bd5d0844f80595fae3f9eb90
+    path: Assets/Scenes/Game.unity
+    guid: 5d344ceb5d03b814a8a8df098c07b5c5
   m_configObjects: {}
