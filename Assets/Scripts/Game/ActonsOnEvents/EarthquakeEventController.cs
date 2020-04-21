@@ -13,16 +13,14 @@ namespace Game.ActonsOnEvents
 
 		public GameObject Earthquake;
 		public GameObject cameraEarthquake;
-		public float forceEarthquake;
-		private Vector3 _startPosition;
-		private float _currentForce = 0;
+		public Animator anim;
 
 		private bool _isRunning = false;
 
 		private void Start()
 		{
 			Earthquake.SetActive(false);
-			_startPosition = cameraEarthquake.transform.position;
+			anim.enabled = false;
 
 
 			InitSingleton();
@@ -43,7 +41,8 @@ namespace Game.ActonsOnEvents
 			_isRunning = true;
 			EarthQuakeShake.Singleton.shake = true;
 			Earthquake.SetActive(true);
-			
+			anim.enabled = true;
+
 		}
 
 
@@ -55,6 +54,7 @@ namespace Game.ActonsOnEvents
 				//Действия
 			}
 			Earthquake.SetActive(false);
+			anim.enabled = false;
 		}
 
 		void InitSingleton()

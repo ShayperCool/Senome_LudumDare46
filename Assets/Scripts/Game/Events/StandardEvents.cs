@@ -28,7 +28,7 @@ namespace Game.Events {
 			GrowUpCancelToken = new CancellationTokenSource();
 			GrowUp();
 			RandomEventSpawn();
-
+			GameManager.Singleton.text.text = "Number of steps to the end of the game: " + NumberMovesUntilTheEndGame.ToString();
 			int _mode = PlayerPrefs.GetInt("game_mode");
 			//if (_mode == 0) NumberMovesUntilTheEndGame = CardsContainer.Singleton.numberMovesSimple;
 			//else NumberMovesUntilTheEndGame = CardsContainer.Singleton.numberMovesMedium;
@@ -53,12 +53,15 @@ namespace Game.Events {
 			{
 				await Task.Delay(Random.Range(3000, 7000));
 				if (GameStop.IsCancellationRequested || NumberMovesUntilTheEndGame == 0)
-					return;
+				{
+					GameManager.Singleton.panelFinish.SetActive(true); return;
+				}				
 
 				if (_village.currentState == Village.State.Danger)
 					continue;
 				var inVillageEvent = (EventInVillage)_enumElements.GetValue(Random.Range(0, _enumElements.Length));
 				VillageController.Singleton.ProcessEventOrCard(GetEvent(inVillageEvent));
+				GameManager.Singleton.text.text = "Number of steps to the end of the game: " + NumberMovesUntilTheEndGame.ToString();
 				NumberMovesUntilTheEndGame--;
 			}
 		}
